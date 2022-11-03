@@ -5,6 +5,7 @@
 
 // 【任务】The input is a sentence, and you should abbreviate every word that is 4 letters long or longer.
 const input = 'Every developer likes to mix kubernetes and javascript';
+// expected 'E3y d7r l3s k8s j8t'
 
 // 1. string.split(' '):string->array
 // 2. array.filter length>=4
@@ -14,11 +15,14 @@ console.log(x[0].length); // 5
 const y = x.filter((v) => v.length >= 4);
 console.log(y); //[ 'Every', 'developer', 'likes', 'kubernetes', 'javascript' ]
 
-const str = 'developer';
+// 3.array.map()遍历 用getAbbreviate函数使之->每个单词的对应的缩写的array
+// 4.array.join() -> string
+const z = y.map(getAbbreviate).join(' ');
+console.log(z);
+
 function getAbbreviate(string) {
   const length = string.length;
   const firstLetter = string[0];
   const lastLetter = string[length - 1];
-  return console.log(firstLetter + length + lastLetter);
+  return firstLetter + (length-2) + lastLetter;
 }
-getAbbreviate(str); // d9r
