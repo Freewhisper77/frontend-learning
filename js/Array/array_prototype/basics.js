@@ -24,7 +24,7 @@ const n2 = Object.getOwnPropertyNames(Array.prototype);
   'at'
 ]*/
 
-// 2. 给Array对象添加新的方法 .duplicator()
+// 2.1 给Array对象添加新的方法 .duplicator()
 const arr = [1, 2, 3];
 
 Array.prototype.duplicator = function () {
@@ -42,5 +42,21 @@ const arr3 = arr1.concat(arr2); // [ 'football', 'basketball', 'volleyball', 'ba
 let i = Array.prototype.push.apply(arr1, arr2); // 4
 console.log(arr1); //[ 'football', 'basketball', 'volleyball', 'badminton' ]
 
+// 2.2 给一个构造函数添加新的方法
+function Car(color, model, dateManufactured) { // 1.创建constructor(构造函数)
+  this.color = color;
+  this.model = model;
+  this.dateManufactured = dateManufactured;
+}
 
+Car.prototype.getColor = function () { // 2.在prototype(原型)上添加方法
+  return this.color;
+}
+Car.prototype.getModel = function () { // 在prototype(原型)上添加方法
+  return this.model;
+}
+Car.prototype.carDate = function () { // 在prototype(原型)上添加方法
+  return `This ${this.model} was manufactured in the year ${this.dateManufactured}`;
+}
 
+const firstCar = new Car("red", "Ferrari", "2008"); // 生成instance(实例)
