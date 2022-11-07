@@ -18,6 +18,7 @@ const timestamp = Date.now();
 console.log(timestamp); // 1667104635379
 
 // 3.new Date() 参数格式
-const birthday = new Date('June 28, 2000 16:15:30');
+const birthday = new Date('June 28, 2000 00:15:30');
 const date1 = birthday.getDate();
-console.log(date1); // 28
+const hour1 = birthday.getHours(); // 午夜0点时，hour=0;(没有24的情况)
+console.log(date1, hour1); // 28 0

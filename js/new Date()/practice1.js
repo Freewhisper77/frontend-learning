@@ -18,16 +18,32 @@ const daylist = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday
 console.log("Today is : " + daylist[day] + "."); // Today is : Monday.
 
 // Q2.但我们想要的是hour(9）后面显示PM 思考，该怎么办呢？
-const hour = today.getHours();
+let hour = today.getHours();
 const minute = today.getMinutes();
 const second = today.getSeconds();
-console.log(`Current time is : ${hour} : ${minute} : ${second}`); // output: Current time is : 21 : 42 : 11
 // （1）hour: 21 -> 9; 9 -> 9
-let hours;
-if (today.getHours() > 12) {
-  hours = today.getHours() - 12;
-} else {
-  hours = today.getHours();
-}
 // （2）AM or PM
-const m = (hour >12)? "PM" : "AM";
+let m = (hour >= 12)? "PM" : "AM";
+hour = (hour >= 12)? hour - 12 : hour;
+// （3）还有一个要思考的问题：中午12点时，hour=12-12=0; 午夜0点时，hour=0;
+if (hour===0 && m==='PM') {
+  if (minute===0 && second===0) {
+    hour=12;
+    m='Noon';
+  }else {
+    hour=12;
+    m='PM';
+  }
+}
+
+if (hour===0 && m==='AM') {
+  if (minute===0 && second===0) {
+    hour=12;
+    m='Midnight';
+  }else {
+    hour=12;
+    m='AM';
+  }
+}
+
+console.log(`Current time is : ${hour} ${m}: ${minute} : ${second}`); // output: Current time is : 21 : 42 : 11
