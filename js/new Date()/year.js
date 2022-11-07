@@ -7,6 +7,7 @@ const year = new Date().getFullYear();
 console.log(year); // 2022
 
 console.log(new Date().getDate());
+console.log(new Date().getDay()); // 返回星期几0~6 "Sunday"对应0
 console.log(new Date().getMonth());
 console.log('h',new Date().getHours());
 console.log('m',new Date().getMinutes());
