@@ -17,7 +17,17 @@ console.log(lastDay.getDay()); // 0*/
 const daylist = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 console.log("Today is : " + daylist[day] + "."); // Today is : Monday.
 
-console.log(`${today.getHours()} : ${today.getMinutes()} : ${today.getSeconds()}`); // output: 21 : 3 : 53
 // Q2.但我们想要的是hour(9）后面显示PM 思考，该怎么办呢？
-
-
+const hour = today.getHours();
+const minute = today.getMinutes();
+const second = today.getSeconds();
+console.log(`Current time is : ${hour} : ${minute} : ${second}`); // output: Current time is : 21 : 42 : 11
+// （1）hour: 21 -> 9; 9 -> 9
+let hours;
+if (today.getHours() > 12) {
+  hours = today.getHours() - 12;
+} else {
+  hours = today.getHours();
+}
+// （2）AM or PM
+const m = (hour >12)? "PM" : "AM";
