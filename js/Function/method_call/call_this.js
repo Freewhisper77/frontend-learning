@@ -16,6 +16,7 @@ const obj = {
 };
 
 greet.call(obj);  // cats typically sleep between 12 and 16 hours
+greet.apply(obj);  // cats typically sleep between 12 and 16 hours
 
 
 // 2. 使用 call 方法调用函数并且不指定第一个参数（argument）
